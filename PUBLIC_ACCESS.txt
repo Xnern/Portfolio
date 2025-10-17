@@ -1,0 +1,23 @@
+========================================
+PORTFOLIO SITE - PUBLIC ACCESS URL
+========================================
+
+🌐 Public URL: https://b780567cf917.ngrok-free.app
+
+✅ Setup Complete:
+   - ngrok installed and configured with authtoken
+   - Vite dev server running on port 5173
+   - ngrok tunnel active and exposing the site
+   - Site is publicly accessible
+
+⚠️  First-time visitors may see an ngrok interstitial page
+    (this is normal for free ngrok accounts)
+
+📊 Monitoring:
+   - ngrok Web Interface: http://localhost:4040
+   - Vite logs: vite.log
+   - ngrok logs: ngrok.log
+
+✅ Both services are running in the background and will remain active.
+
+For more details, see NGROK_INFO.md
