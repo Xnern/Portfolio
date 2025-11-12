@@ -28,16 +28,16 @@ export function LoadingScreen() {
       return;
     }
 
-    // Show skip button after 500ms
+    // Show skip button after 300ms for better UX
     const skipTimer = setTimeout(() => {
       setShowSkip(true);
-    }, 500);
+    }, 300);
 
-    // Auto-hide loading after 2 seconds
+    // Auto-hide loading after 1.5 seconds for better performance
     const loadingTimer = setTimeout(() => {
       setIsLoading(false);
       localStorage.setItem('hasSeenLoading', 'true');
-    }, 2000);
+    }, 1500);
 
     return () => {
       clearTimeout(skipTimer);

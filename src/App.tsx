@@ -52,10 +52,13 @@ export function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate initial loading
+    // Reduce loading time for better performance (only show on first visit)
+    const hasSeenLoading = localStorage.getItem('hasSeenLoading');
+    const loadingDuration = hasSeenLoading === 'true' ? 500 : 1500; // 0.5s if seen before, 1.5s first time
+
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, loadingDuration);
 
     return () => clearTimeout(timer);
   }, []);

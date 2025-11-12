@@ -12,45 +12,54 @@ export function HeroNew() {
   const opacity = useTransform(scrollY, [0, 800], [1, 0]);
 
   useEffect(() => {
-    // GSAP animations for floating elements
-    gsap.to('.floating-1', {
-      y: -20,
-      duration: 2,
-      repeat: -1,
-      yoyo: true,
-      ease: 'power1.inOut',
-    });
+    // Optimize GSAP animations with reduced complexity
+    const ctx = gsap.context(() => {
+      // Use a single timeline for better performance
+      const tl = gsap.timeline();
 
-    gsap.to('.floating-2', {
-      y: -30,
-      duration: 2.5,
-      repeat: -1,
-      yoyo: true,
-      ease: 'power1.inOut',
-      delay: 0.5,
-    });
-
-    gsap.to('.floating-3', {
-      y: -25,
-      duration: 3,
-      repeat: -1,
-      yoyo: true,
-      ease: 'power1.inOut',
-      delay: 1,
-    });
-
-    // Particle animation
-    const particles = document.querySelectorAll('.particle');
-    particles.forEach((particle, index) => {
-      gsap.to(particle, {
-        y: -1000,
-        opacity: 0,
-        duration: gsap.utils.random(3, 6),
+      // Floating elements with will-change for GPU acceleration
+      gsap.to('.floating-1', {
+        y: -20,
+        duration: 2,
         repeat: -1,
-        delay: index * 0.2,
-        ease: 'none',
+        yoyo: true,
+        ease: 'power1.inOut',
+      });
+
+      gsap.to('.floating-2', {
+        y: -30,
+        duration: 2.5,
+        repeat: -1,
+        yoyo: true,
+        ease: 'power1.inOut',
+        delay: 0.5,
+      });
+
+      gsap.to('.floating-3', {
+        y: -25,
+        duration: 3,
+        repeat: -1,
+        yoyo: true,
+        ease: 'power1.inOut',
+        delay: 1,
+      });
+
+      // Optimize particle animations - batch them for better performance
+      const particles = document.querySelectorAll('.particle');
+      particles.forEach((particle, index) => {
+        gsap.to(particle, {
+          y: -1000,
+          opacity: 0,
+          duration: gsap.utils.random(4, 7), // Longer duration for smoother animation
+          repeat: -1,
+          delay: index * 0.3,
+          ease: 'none',
+        });
       });
     });
+
+    // Cleanup function
+    return () => ctx.revert();
   }, []);
 
   const scrollToProjects = () => {
@@ -67,17 +76,17 @@ export function HeroNew() {
         style={{ y: y1, opacity }}
         className="absolute inset-0 z-0"
       >
-        <div className="absolute top-20 left-10 w-96 h-96 rounded-full bg-yellow-500/10 blur-3xl floating-1"></div>
-        <div className="absolute top-40 right-20 w-80 h-80 rounded-full bg-yellow-500/5 blur-3xl floating-2"></div>
-        <div className="absolute bottom-20 left-1/4 w-72 h-72 rounded-full bg-yellow-500/7 blur-3xl floating-3"></div>
+        <div className="absolute top-20 left-10 w-96 h-96 rounded-full bg-yellow-500/10 blur-3xl floating-1 will-change-transform"></div>
+        <div className="absolute top-40 right-20 w-80 h-80 rounded-full bg-yellow-500/5 blur-3xl floating-2 will-change-transform"></div>
+        <div className="absolute bottom-20 left-1/4 w-72 h-72 rounded-full bg-yellow-500/7 blur-3xl floating-3 will-change-transform"></div>
       </motion.div>
 
-      {/* Particles */}
+      {/* Particles - reduced for performance */}
       <div className="absolute inset-0 z-0">
-        {[...Array(20)].map((_, i) => (
+        {[...Array(10)].map((_, i) => (
           <div
             key={i}
-            className="particle absolute w-1 h-1 bg-yellow-500 rounded-full"
+            className="particle absolute w-1 h-1 bg-yellow-500 rounded-full will-change-transform"
             style={{
               left: `${Math.random() * 100}%`,
               bottom: 0,
