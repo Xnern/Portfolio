@@ -132,11 +132,12 @@ export function ProjectsSectionNew() {
               onClick={() => setSelectedCategory(category)}
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className={`px-6 py-3 rounded-xl font-medium transition-all ${
+              className={`px-6 py-3 rounded-xl font-medium transition-all min-w-[44px] min-h-[44px] ${
                 selectedCategory === category
                   ? 'bg-yellow-500 text-black shadow-lg shadow-yellow-500/50'
                   : 'bg-gray-900 text-gray-300 border border-yellow-500/30 hover:border-yellow-500'
               }`}
+              aria-label={category === 'All' ? 'Afficher tous les projets' : `Filtrer les projets par catégorie ${category}`}
             >
               {category}
               <span className="ml-2 text-xs opacity-70">
@@ -180,11 +181,13 @@ export function ProjectsSectionNew() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-black font-bold rounded-xl transition-all shadow-lg shadow-yellow-500/30"
+            aria-label="Voir plus de projets sur mon profil GitHub"
           >
             <span>Voir plus sur GitHub</span>
             <motion.span
               animate={{ x: [0, 5, 0] }}
               transition={{ duration: 1.5, repeat: Infinity }}
+              aria-hidden="true"
             >
               →
             </motion.span>

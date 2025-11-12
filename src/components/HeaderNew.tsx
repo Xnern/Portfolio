@@ -66,6 +66,7 @@ export function HeaderNew() {
               to="/"
               onClick={() => scrollToSection(null)}
               className="flex items-center gap-3 group"
+              aria-label="Retour à l'accueil"
             >
               <Logo size={40} className="group-hover:scale-110 transition-transform" />
               <motion.div
@@ -115,7 +116,9 @@ export function HeaderNew() {
             <motion.button
               whileTap={{ scale: 0.9 }}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 text-yellow-500 hover:bg-yellow-500/10 rounded-lg transition-colors"
+              className="lg:hidden p-3 text-yellow-500 hover:bg-yellow-500/10 rounded-lg transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
+              aria-label={isMobileMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+              aria-expanded={isMobileMenuOpen}
             >
               {isMobileMenuOpen ? <XIcon size={28} /> : <MenuIcon size={28} />}
             </motion.button>

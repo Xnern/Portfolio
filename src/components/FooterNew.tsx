@@ -75,16 +75,18 @@ export function FooterNew() {
                 whileHover={{ scale: 1.1, rotate: 360 }}
                 whileTap={{ scale: 0.9 }}
                 className="w-12 h-12 bg-yellow-500/10 border border-yellow-500/30 rounded-lg flex items-center justify-center text-yellow-500 hover:bg-yellow-500 hover:text-black transition-all"
+                aria-label="Voir mon profil GitHub"
               >
-                <GithubIcon size={24} />
+                <GithubIcon size={24} aria-hidden="true" />
               </motion.a>
               <motion.a
                 href="#"
                 whileHover={{ scale: 1.1, rotate: 360 }}
                 whileTap={{ scale: 0.9 }}
                 className="w-12 h-12 bg-yellow-500/10 border border-yellow-500/30 rounded-lg flex items-center justify-center text-yellow-500 hover:bg-yellow-500 hover:text-black transition-all"
+                aria-label="Voir mon profil LinkedIn"
               >
-                <LinkedinIcon size={24} />
+                <LinkedinIcon size={24} aria-hidden="true" />
               </motion.a>
             </motion.div>
           </div>
@@ -158,6 +160,7 @@ export function FooterNew() {
           whileTap={{ scale: 0.9 }}
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           className="fixed bottom-8 right-8 w-14 h-14 bg-yellow-500 hover:bg-yellow-600 text-black rounded-full flex items-center justify-center shadow-lg shadow-yellow-500/30 transition-colors z-50"
+          aria-label="Retour en haut de la page"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -165,6 +168,7 @@ export function FooterNew() {
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
+            aria-hidden="true"
           >
             <path
               strokeLinecap="round"

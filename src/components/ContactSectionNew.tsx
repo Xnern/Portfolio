@@ -168,7 +168,7 @@ export function ContactSectionNew() {
                   className="bg-gradient-to-br from-gray-900 to-black border border-yellow-500/20 rounded-2xl p-6 hover:border-yellow-500/50 transition-all group"
                 >
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-yellow-500/10 border border-yellow-500/30 rounded-xl flex items-center justify-center text-yellow-500 group-hover:bg-yellow-500 group-hover:text-black transition-all">
+                    <div className="w-12 h-12 bg-yellow-500/10 border border-yellow-500/30 rounded-xl flex items-center justify-center text-yellow-500 group-hover:bg-yellow-500 group-hover:text-black transition-all" aria-hidden="true">
                       {info.icon}
                     </div>
                     <div>
@@ -179,6 +179,7 @@ export function ContactSectionNew() {
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-white font-medium hover:text-yellow-500 transition-colors"
+                          aria-label={`Visiter mon profil ${info.label}`}
                         >
                           {info.value}
                         </a>

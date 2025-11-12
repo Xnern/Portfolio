@@ -76,8 +76,9 @@ export function ProjectCardNew({ project, index }: { project: Project; index: nu
                   whileTap={{ scale: 0.9 }}
                   className="w-12 h-12 bg-black/80 rounded-full flex items-center justify-center text-yellow-500 hover:bg-yellow-500 hover:text-black transition-colors"
                   onClick={(e) => e.stopPropagation()}
+                  aria-label={`Voir le code source de ${project.title} sur GitHub`}
                 >
-                  <GithubIcon size={24} />
+                  <GithubIcon size={24} aria-hidden="true" />
                 </motion.a>
               )}
               {project.liveUrl && (
@@ -89,8 +90,9 @@ export function ProjectCardNew({ project, index }: { project: Project; index: nu
                   whileTap={{ scale: 0.9 }}
                   className="w-12 h-12 bg-black/80 rounded-full flex items-center justify-center text-yellow-500 hover:bg-yellow-500 hover:text-black transition-colors"
                   onClick={(e) => e.stopPropagation()}
+                  aria-label={`Voir le site en ligne de ${project.title}`}
                 >
-                  <ExternalLinkIcon size={24} />
+                  <ExternalLinkIcon size={24} aria-hidden="true" />
                 </motion.a>
               )}
             </motion.div>
@@ -127,11 +129,13 @@ export function ProjectCardNew({ project, index }: { project: Project; index: nu
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="w-full py-3 bg-yellow-500/10 hover:bg-yellow-500 text-yellow-500 hover:text-black border border-yellow-500/30 hover:border-yellow-500 rounded-lg font-medium transition-all flex items-center justify-center gap-2 group/btn"
+                aria-label={`Voir les détails du projet ${project.title}`}
               >
                 Voir les détails
                 <motion.span
                   initial={{ x: 0 }}
                   className="group-hover/btn:translate-x-1 transition-transform"
+                  aria-hidden="true"
                 >
                   →
                 </motion.span>

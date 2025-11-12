@@ -249,17 +249,19 @@ export function HeroNew() {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.2, rotate: 360 }}
             transition={{ duration: 0.3 }}
-            className="text-gray-400 hover:text-yellow-500 transition-colors"
+            className="text-gray-400 hover:text-yellow-500 transition-colors p-2 min-w-[44px] min-h-[44px] flex items-center justify-center"
+            aria-label="Voir mon profil GitHub"
           >
-            <GithubIcon size={28} />
+            <GithubIcon size={28} aria-hidden="true" />
           </motion.a>
           <motion.a
             href="#"
             whileHover={{ scale: 1.2, rotate: 360 }}
             transition={{ duration: 0.3 }}
-            className="text-gray-400 hover:text-yellow-500 transition-colors"
+            className="text-gray-400 hover:text-yellow-500 transition-colors p-2 min-w-[44px] min-h-[44px] flex items-center justify-center"
+            aria-label="Voir mon profil LinkedIn"
           >
-            <LinkedinIcon size={28} />
+            <LinkedinIcon size={28} aria-hidden="true" />
           </motion.a>
         </motion.div>
       </motion.div>

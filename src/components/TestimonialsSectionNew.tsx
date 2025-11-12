@@ -158,16 +158,18 @@ export function TestimonialsSectionNew() {
                     whileTap={{ scale: 0.9 }}
                     onClick={prevTestimonial}
                     className="absolute left-0 md:-left-16 w-12 h-12 bg-yellow-500 hover:bg-yellow-600 text-black rounded-full flex items-center justify-center shadow-lg shadow-yellow-500/30 transition-colors"
+                    aria-label="Témoignage précédent"
                   >
-                    <ChevronLeftIcon size={24} />
+                    <ChevronLeftIcon size={24} aria-hidden="true" />
                   </motion.button>
                   <motion.button
                     whileHover={{ scale: 1.1, x: 5 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={nextTestimonial}
                     className="absolute right-0 md:-right-16 w-12 h-12 bg-yellow-500 hover:bg-yellow-600 text-black rounded-full flex items-center justify-center shadow-lg shadow-yellow-500/30 transition-colors"
+                    aria-label="Témoignage suivant"
                   >
-                    <ChevronRightIcon size={24} />
+                    <ChevronRightIcon size={24} aria-hidden="true" />
                   </motion.button>
                 </>
               )}
@@ -186,6 +188,8 @@ export function TestimonialsSectionNew() {
                         ? 'bg-yellow-500 w-8'
                         : 'bg-gray-700 hover:bg-gray-600'
                     }`}
+                    aria-label={`Aller au témoignage ${index + 1}`}
+                    aria-current={index === currentIndex ? 'true' : 'false'}
                   />
                 ))}
               </div>
@@ -240,6 +244,7 @@ export function TestimonialsSectionNew() {
             whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(255, 215, 0, 0.3)' }}
             whileTap={{ scale: 0.95 }}
             className="inline-block px-8 py-4 bg-yellow-500 hover:bg-yellow-600 text-black font-bold rounded-xl transition-all"
+            aria-label="Aller à la section contact pour discuter de votre projet"
           >
             Discutons de votre projet
           </motion.a>

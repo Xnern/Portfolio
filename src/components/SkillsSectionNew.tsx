@@ -94,7 +94,7 @@ function CircularProgress({ skill, delay }: { skill: Skill; delay: number }) {
           </div>
 
           {/* Skill name */}
-          <h4 className="text-lg font-bold text-white mb-1">{skill.name}</h4>
+          <h3 className="text-lg font-bold text-white mb-1">{skill.name}</h3>
           <span className="text-xs text-gray-400 px-3 py-1 bg-yellow-500/10 rounded-full">
             {skill.category}
           </span>
@@ -174,11 +174,12 @@ export function SkillsSectionNew() {
               onClick={() => setSelectedCategory(category)}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className={`px-6 py-2 rounded-lg font-medium transition-all ${
+              className={`px-6 py-2 rounded-lg font-medium transition-all min-w-[44px] min-h-[44px] ${
                 selectedCategory === category
                   ? 'bg-yellow-500 text-black'
                   : 'bg-gray-900 text-gray-300 border border-yellow-500/30 hover:border-yellow-500'
               }`}
+              aria-label={category === 'All' ? 'Afficher toutes les compétences' : `Filtrer par catégorie ${category}`}
             >
               {category}
             </motion.button>
