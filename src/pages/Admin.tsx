@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ProjectForm } from '../components/ProjectForm';
 import { SkillForm } from '../components/SkillForm';
 import { CategoryForm } from '../components/CategoryForm';
@@ -9,8 +10,10 @@ import { getProjects, saveProject, deleteProject } from '../utils/projectData';
 import { getSkills, saveSkill, deleteSkill, getSkillCategories, saveSkillCategory, deleteSkillCategory } from '../utils/skillsData';
 import { getAboutInfo, saveAboutInfo } from '../utils/aboutData';
 import { getTestimonials, saveTestimonial, deleteTestimonial } from '../utils/testimonialData';
-import { PencilIcon, TrashIcon, LayersIcon, TagIcon, UserIcon, MessageSquareIcon } from 'lucide-react';
+import { PencilIcon, TrashIcon, LayersIcon, TagIcon, UserIcon, MessageSquareIcon, LogOutIcon } from 'lucide-react';
 export function Admin() {
+  const navigate = useNavigate();
+
   // Projects state
   const [projects, setProjects] = useState<Project[]>([]);
   const [editingProject, setEditingProject] = useState<Project | null>(null);
@@ -27,6 +30,12 @@ export function Admin() {
   const [editingTestimonial, setEditingTestimonial] = useState<Testimonial | null>(null);
   // Active tab state
   const [activeTab, setActiveTab] = useState<'projects' | 'skills' | 'categories' | 'about' | 'testimonials'>('projects');
+
+  // Logout handler
+  const handleLogout = () => {
+    sessionStorage.removeItem('admin_auth');
+    navigate('/');
+  };
   useEffect(() => {
     loadProjects();
     loadSkills();
@@ -103,8 +112,19 @@ export function Admin() {
     }
   };
   return <div className="max-w-7xl mx-auto py-12 px-8">
-      <h1 className="text-3xl font-bold mb-2">Panneau d'Administration</h1>
-      <div className="w-20 h-1 bg-yellow-500 mb-8"></div>
+      <div className="flex justify-between items-center mb-8">
+        <div>
+          <h1 className="text-3xl font-bold mb-2">Panneau d'Administration</h1>
+          <div className="w-20 h-1 bg-yellow-500"></div>
+        </div>
+        <button
+          onClick={handleLogout}
+          className="flex items-center gap-2 px-4 py-2 bg-red-500/10 hover:bg-red-500 text-red-500 hover:text-white border border-red-500/30 hover:border-red-500 rounded-lg transition-all"
+        >
+          <LogOutIcon size={18} />
+          Déconnexion
+        </button>
+      </div>
       {/* Tab Navigation */}
       <div className="flex flex-wrap border-b border-gray-800 mb-8">
         <button className={`py-3 px-5 font-medium ${activeTab === 'projects' ? 'text-yellow-500 border-b-2 border-yellow-500' : 'text-gray-400 hover:text-white'}`} onClick={() => setActiveTab('projects')}>

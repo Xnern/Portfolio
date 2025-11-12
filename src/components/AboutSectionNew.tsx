@@ -107,9 +107,9 @@ export function AboutSectionNew() {
                 className="relative"
               >
                 <motion.div
-                  className="absolute -left-[37px] top-0 w-6 h-6 bg-yellow-500 rounded-full border-4 border-black"
+                  className="absolute -left-[45px] top-0 w-10 h-10 bg-yellow-500 rounded-lg flex items-center justify-center border-2 border-black"
                   animate={{
-                    scale: [1, 1.2, 1],
+                    scale: [1, 1.1, 1],
                     boxShadow: [
                       '0 0 0 0 rgba(255, 215, 0, 0.4)',
                       '0 0 0 10px rgba(255, 215, 0, 0)',
@@ -120,7 +120,9 @@ export function AboutSectionNew() {
                     duration: 2,
                     repeat: Infinity,
                   }}
-                />
+                >
+                  <BriefcaseIcon size={20} className="text-black" />
+                </motion.div>
                 <div className="bg-gray-900/50 border border-yellow-500/30 rounded-lg p-6 hover:border-yellow-500/60 transition-all">
                   <div className="flex items-center gap-2 text-yellow-500 mb-2">
                     <BriefcaseIcon size={20} />
@@ -151,7 +153,9 @@ export function AboutSectionNew() {
                 whileHover={{ x: 10 }}
                 className="relative"
               >
-                <div className="absolute -left-[37px] top-0 w-6 h-6 bg-yellow-500/50 rounded-full border-4 border-black" />
+                <div className="absolute -left-[45px] top-0 w-10 h-10 bg-yellow-500/80 rounded-lg flex items-center justify-center border-2 border-black">
+                  <GraduationCapIcon size={20} className="text-black" />
+                </div>
                 <div className="bg-gray-900/50 border border-yellow-500/20 rounded-lg p-6 hover:border-yellow-500/40 transition-all">
                   <div className="flex items-center gap-2 text-yellow-500 mb-2">
                     <GraduationCapIcon size={20} />
@@ -182,7 +186,9 @@ export function AboutSectionNew() {
                 whileHover={{ x: 10 }}
                 className="relative"
               >
-                <div className="absolute -left-[37px] top-0 w-6 h-6 bg-yellow-500/30 rounded-full border-4 border-black" />
+                <div className="absolute -left-[45px] top-0 w-10 h-10 bg-yellow-500/60 rounded-lg flex items-center justify-center border-2 border-black">
+                  <GraduationCapIcon size={20} className="text-black" />
+                </div>
                 <div className="bg-gray-900/50 border border-yellow-500/20 rounded-lg p-6 hover:border-yellow-500/40 transition-all">
                   <div className="flex items-center gap-2 text-yellow-500 mb-2">
                     <GraduationCapIcon size={20} />
