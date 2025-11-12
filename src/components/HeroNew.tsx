@@ -258,7 +258,8 @@ export function HeroNew() {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.2, rotate: 360 }}
             transition={{ duration: 0.3 }}
-            className="text-gray-400 hover:text-yellow-500 transition-colors p-2 min-w-[44px] min-h-[44px] flex items-center justify-center"
+            className="text-gray-400 hover:text-yellow-500 transition-colors flex items-center justify-center"
+            style={{ minWidth: '44px', minHeight: '44px', padding: '8px' }}
             aria-label="Voir mon profil GitHub"
           >
             <GithubIcon size={28} aria-hidden="true" />
@@ -267,7 +268,8 @@ export function HeroNew() {
             href="#"
             whileHover={{ scale: 1.2, rotate: 360 }}
             transition={{ duration: 0.3 }}
-            className="text-gray-400 hover:text-yellow-500 transition-colors p-2 min-w-[44px] min-h-[44px] flex items-center justify-center"
+            className="text-gray-400 hover:text-yellow-500 transition-colors flex items-center justify-center"
+            style={{ minWidth: '44px', minHeight: '44px', padding: '8px' }}
             aria-label="Voir mon profil LinkedIn"
           >
             <LinkedinIcon size={28} aria-hidden="true" />
@@ -284,12 +286,12 @@ export function HeroNew() {
           opacity: { delay: 2 },
           y: { duration: 1.5, repeat: Infinity, ease: 'easeInOut' },
         }}
-        className="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-20"
+        className="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-20 flex flex-col items-center gap-2"
+        style={{ minWidth: '44px', minHeight: '44px' }}
+        aria-label="Faire défiler vers la section À Propos"
       >
-        <div className="flex flex-col items-center gap-2">
-          <span className="text-yellow-500 text-sm font-medium">Scroll</span>
-          <ArrowDownIcon className="text-yellow-500" size={32} />
-        </div>
+        <span className="text-yellow-500 text-sm font-medium">Scroll</span>
+        <ArrowDownIcon className="text-yellow-500" size={32} aria-hidden="true" />
       </motion.button>
 
       {/* Decorative code brackets */}
