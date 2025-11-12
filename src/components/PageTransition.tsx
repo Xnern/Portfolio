@@ -16,14 +16,39 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
 
 export function LoadingScreen() {
   const [isLoading, setIsLoading] = useState(true);
+  const [showSkip, setShowSkip] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    // Check if user has seen the loading screen before
+    const hasSeenLoading = localStorage.getItem('hasSeenLoading');
+
+    if (hasSeenLoading === 'true') {
+      // Skip loading if user has seen it before
       setIsLoading(false);
+      return;
+    }
+
+    // Show skip button after 500ms
+    const skipTimer = setTimeout(() => {
+      setShowSkip(true);
+    }, 500);
+
+    // Auto-hide loading after 2 seconds
+    const loadingTimer = setTimeout(() => {
+      setIsLoading(false);
+      localStorage.setItem('hasSeenLoading', 'true');
     }, 2000);
 
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(skipTimer);
+      clearTimeout(loadingTimer);
+    };
   }, []);
+
+  const handleSkip = () => {
+    setIsLoading(false);
+    localStorage.setItem('hasSeenLoading', 'true');
+  };
 
   return (
     <AnimatePresence>
@@ -34,7 +59,7 @@ export function LoadingScreen() {
           transition={{ duration: 0.5 }}
           className="fixed inset-0 z-[10000] bg-black flex items-center justify-center"
         >
-          <div className="text-center">
+          <div className="text-center relative">
             {/* Logo animation */}
             <motion.div
               initial={{ scale: 0, rotate: -180 }}
@@ -92,6 +117,22 @@ export function LoadingScreen() {
                 />
               </div>
             </motion.div>
+
+            {/* Skip button */}
+            <AnimatePresence>
+              {showSkip && (
+                <motion.button
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0 }}
+                  onClick={handleSkip}
+                  className="mt-8 px-6 py-2 border border-yellow-500/30 hover:border-yellow-500 hover:bg-yellow-500/10 text-yellow-500 rounded-lg transition-all text-sm"
+                  aria-label="Passer l'animation"
+                >
+                  Passer →
+                </motion.button>
+              )}
+            </AnimatePresence>
           </div>
         </motion.div>
       )}

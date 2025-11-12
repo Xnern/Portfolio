@@ -1,0 +1,10 @@
+# robots.txt for Nathan Berthaud Portfolio
+
+User-agent: *
+Allow: /
+
+# Disallow admin pages
+Disallow: /admin
+
+# Sitemap
+Sitemap: https://nathanberthaud.com/sitemap.xml
